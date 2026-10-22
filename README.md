@@ -4,8 +4,6 @@ An end-to-end Power BI project analysing the workforce of a fictional company of
 
 The project covers the full workflow, not just the dashboard: loading raw CSV files, fixing data-type and locale issues in Power Query, building a star-schema data model with active and inactive relationships, writing DAX measures, and designing a 4-page interactive report.
 
-> Based on the DataCamp case study *HR Analytics in Power BI*. I rebuilt the project locally on my own copy of the data and made several changes to the original solution. They are listed in [What I changed vs. the course solution](#what-i-changed-vs-the-course-solution).
-
 ![Overview page](images/Overview.png)
 
 ---
@@ -29,7 +27,7 @@ The project covers the full workflow, not just the dashboard: loading raw CSV fi
 
 ## Data
 
-Six source files: two fact/dimension tables with employee data and three lookup tables.
+Six source files: two fact/dimension tables with employee data and three lookup tables. The dataset is a fictional HR dataset published by DataCamp.
 
 | File | Table in model | Rows | Description |
 |---|---|---|---|
@@ -217,10 +215,9 @@ Overall attrition rate plus attrition **by hire date**, **department and job rol
 
 ---
 
-## What I changed vs. the course solution
+## Data quality fixes and refinements
 
-- **Local data source:** loaded the CSVs from local files instead of the course's web URLs.
-- **Correct date parsing:** the course solution converts `ReviewDate` with the default locale. On a Polish-locale machine this produced errors and silently swapped day and month. I fixed it with a locale-aware type conversion (`en-US`).
+- **Correct date parsing:** converting `ReviewDate` with the default (Polish) locale produced errors and silently swapped day and month. I fixed it with a locale-aware type conversion (`en-US`) instead of removing the error rows.
 - **Age-group sort order:** added the `AgeBinsSorted` helper column so age groups appear in logical order instead of alphabetical order.
 - **`LastReviewDate`:** refactored the measure with a variable (`VAR`) so the `MAX` is evaluated once, and replaced the `= BLANK()` comparison with `ISBLANK()`. Because the measure returns either text or a date, the date is formatted with `FORMAT` so both cases display consistently.
 - **Consistent formatting:** KPI cards show exact values (`1 470` instead of the auto-abbreviated `1,47K`) using text measures such as `TotalEmployees Label = FORMAT([TotalEmployees], "#,0")`, and all date cards on the Performance Tracker page use one date format.
@@ -230,7 +227,7 @@ Overall attrition rate plus attrition **by hire date**, **department and job rol
 ## How to open the project
 
 1. Clone the repository.
-2. Download the source CSV files from the DataCamp case study *HR Analytics in Power BI*.
+2. Download the source CSV files (see [Data](#data)).
 3. Open `HR Analytics.pbip` in Power BI Desktop.
 4. Point each query to the folder where you saved the CSV files (**Transform data → Data source settings → Change source**), then click **Refresh**.
 
