@@ -1,0 +1,34 @@
+table DimSatisfiedLevel
+	lineageTag: 1bebccbb-e1e0-4850-9fa0-38d38feace64
+
+	column SatisfactionID
+		dataType: int64
+		formatString: 0
+		lineageTag: bd15eeb9-a6ba-4e79-87e9-fb00f5be18ab
+		summarizeBy: none
+		sourceColumn: SatisfactionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SatisfactionLevel
+		dataType: string
+		lineageTag: edad0803-6107-41c8-aa16-af8b4264334b
+		summarizeBy: none
+		sourceColumn: SatisfactionLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSatisfiedLevel = m
+		mode: import
+		source =
+				let
+				    Źródło = Csv.Document(File.Contents("C:\Users\erozm\Downloads\case-study-hr-analytics-in-power-bi\Datasets\SatisfiedLevel.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Nagłówki o podwyższonym poziomie" = Table.PromoteHeaders(Źródło, [PromoteAllScalars=true]),
+				    #"Zmieniono typ" = Table.TransformColumnTypes(#"Nagłówki o podwyższonym poziomie",{{"SatisfactionID", Int64.Type}, {"SatisfactionLevel", type text}})
+				in
+				    #"Zmieniono typ"
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,245 @@
+table DimEmployee
+	lineageTag: f9ccdb53-17ff-4eec-a10c-6ea4f7d2a1a5
+
+	column EmployeeID
+		dataType: string
+		lineageTag: 1415a59f-375b-4bfc-9554-df0ce26dcb4c
+		summarizeBy: none
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: c71047c9-7a54-4a0b-8778-c4461841d4af
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 305bf050-eec7-4668-b3e7-3dd88aa67963
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 0eb6c782-5744-4618-907f-af78eaf718f7
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: b8b241cf-c318-4ffc-bf3b-79117b0ab454
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessTravel
+		dataType: string
+		lineageTag: 10725e5e-2b3e-4abd-a30f-d7861feb9cef
+		summarizeBy: none
+		sourceColumn: BusinessTravel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: ada3957c-7879-4534-ac97-63b541858b78
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DistanceFromHome (KM)'
+		dataType: int64
+		formatString: 0
+		lineageTag: e25c388c-695c-490c-b0e2-b46203f70119
+		summarizeBy: sum
+		sourceColumn: DistanceFromHome (KM)
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 32d6c1a1-9351-483c-b37b-e2929f8b7215
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ethnicity
+		dataType: string
+		lineageTag: bf4208a2-9d82-4fc5-9434-e9833a3de99e
+		summarizeBy: none
+		sourceColumn: Ethnicity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Education
+		dataType: int64
+		formatString: 0
+		lineageTag: 90ac3eb7-1f0f-4b24-a7e6-f3392bbc37d2
+		summarizeBy: none
+		sourceColumn: Education
+
+		annotation SummarizationSetBy = Automatic
+
+	column EducationField
+		dataType: string
+		lineageTag: c289564b-6f03-4a40-93f5-f01b340d10fc
+		summarizeBy: none
+		sourceColumn: EducationField
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobRole
+		dataType: string
+		lineageTag: cf8f86cf-8d6a-4356-8ae7-aea7800b74d0
+		summarizeBy: none
+		sourceColumn: JobRole
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaritalStatus
+		dataType: string
+		lineageTag: 60cccf92-5b0e-4f1c-8192-4b9050c4e64d
+		summarizeBy: none
+		sourceColumn: MaritalStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salary
+		dataType: int64
+		formatString: 0
+		lineageTag: 46c3863b-ace7-4b0e-a81d-7558585d53c8
+		summarizeBy: sum
+		sourceColumn: Salary
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockOptionLevel
+		dataType: int64
+		formatString: 0
+		lineageTag: 71134151-a805-401d-8b32-e0a852e61889
+		summarizeBy: sum
+		sourceColumn: StockOptionLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverTime
+		dataType: string
+		lineageTag: 9b0458ef-3ca8-4dc8-a570-8f4a41f1448a
+		summarizeBy: none
+		sourceColumn: OverTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column HireDate
+		dataType: dateTime
+		formatString: d.mm.yyyy
+		lineageTag: 363c805f-0fa7-4552-b5de-6c221d91d808
+		summarizeBy: none
+		sourceColumn: HireDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Attrition
+		dataType: string
+		lineageTag: 78fd3b1a-7c95-4b1b-baf6-cc125920ca49
+		summarizeBy: none
+		sourceColumn: Attrition
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsAtCompany
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c7d2316-7bd3-4b21-8d2b-4c6119cc78b7
+		summarizeBy: sum
+		sourceColumn: YearsAtCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsInMostRecentRole
+		dataType: int64
+		formatString: 0
+		lineageTag: 3bc632f7-3a60-4861-a18d-c6b253b94c61
+		summarizeBy: sum
+		sourceColumn: YearsInMostRecentRole
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsSinceLastPromotion
+		dataType: int64
+		formatString: 0
+		lineageTag: 87425e7c-dab0-4543-8793-9fbfe62404de
+		summarizeBy: sum
+		sourceColumn: YearsSinceLastPromotion
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsWithCurrManager
+		dataType: int64
+		formatString: 0
+		lineageTag: 4456bfec-b553-4e6b-9e9c-cf0d0482a1c3
+		summarizeBy: sum
+		sourceColumn: YearsWithCurrManager
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeBins
+		dataType: string
+		lineageTag: 08bcc4c0-447e-465e-907e-f9087f581178
+		summarizeBy: none
+		sourceColumn: AgeBins
+		sortByColumn: AgeBinsSorted
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeBinsSorted
+		dataType: int64
+		formatString: 0
+		lineageTag: 5315e3c3-8dfc-4065-9a05-1374f17abc07
+		summarizeBy: sum
+		sourceColumn: AgeBinsSorted
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullName = COMBINEVALUES(" ", DimEmployee[FirstName], DimEmployee[LastName])
+		lineageTag: c076a9f9-30d8-468b-b6cc-6f805e89a462
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEmployee = m
+		mode: import
+		source =
+				let
+				    Źródło = Csv.Document(File.Contents("C:\Users\erozm\Downloads\case-study-hr-analytics-in-power-bi\Datasets\Employee.csv"),[Delimiter=",", Columns=23, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Nagłówki o podwyższonym poziomie" = Table.PromoteHeaders(Źródło, [PromoteAllScalars=true]),
+				    #"Zmieniono typ" = Table.TransformColumnTypes(#"Nagłówki o podwyższonym poziomie",{{"EmployeeID", type text}, {"FirstName", type text}, {"LastName", type text}, {"Gender", type text}, {"Age", Int64.Type}, {"BusinessTravel", type text}, {"Department", type text}, {"DistanceFromHome (KM)", Int64.Type}, {"State", type text}, {"Ethnicity", type text}, {"Education", Int64.Type}, {"EducationField", type text}, {"JobRole", type text}, {"MaritalStatus", type text}, {"Salary", Int64.Type}, {"StockOptionLevel", Int64.Type}, {"OverTime", type text}, {"HireDate", type date}, {"Attrition", type text}, {"YearsAtCompany", Int64.Type}, {"YearsInMostRecentRole", Int64.Type}, {"YearsSinceLastPromotion", Int64.Type}, {"YearsWithCurrManager", Int64.Type}}),
+				    #"Zmieniono typ z ustawieniami regionalnymi" = Table.TransformColumnTypes(#"Zmieniono typ", {{"HireDate", type date}}, "en-US"),
+				    #"Dodano kolumnę warunkową" = Table.AddColumn(#"Zmieniono typ z ustawieniami regionalnymi", "AgeBins", each if [Age] >= 50 then "50>" else if [Age] >= 40 then "40-49" else if [Age] >= 30 then "30-39" else if [Age] >= 20 then "20-29" else "<20"),
+				    #"Dodano kolumnę niestandardową" = Table.AddColumn(#"Dodano kolumnę warunkową", "AgeBinsSorted", each if [Age] >= 50 then 5 else if [Age] >= 40 then 4 else if [Age] >= 30 then 3 else if [Age] >= 20 then 2 else 1),
+				    #"Zmieniono typ1" = Table.TransformColumnTypes(#"Dodano kolumnę niestandardową",{{"AgeBinsSorted", Int64.Type}})
+				in
+				    #"Zmieniono typ1"
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,35 @@
+model Model
+	culture: pl-PL
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pl-PL
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DimEducationLevel","DimEmployee","FactPerformanceRating","DimRatingLevel","DimSatisfiedLevel"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DimEducationLevel
+ref table DimEmployee
+ref table DateTableTemplate_6993858e-5320-4706-94f9-70fc9de7562e
+ref table FactPerformanceRating
+ref table DimRatingLevel
+ref table DimSatisfiedLevel
+ref table DimDate
+ref table LocalDateTable_b8b50b6a-4fdf-4f24-b590-8cf7b8427c45
+ref table LocalDateTable_d0e65ec1-2a84-4a62-9c84-81b783ccdfd7
+ref table LocalDateTable_fd927cc0-6901-4e8d-88c1-3ef21ec807b3
+ref table LocalDateTable_2e023aa6-365e-4d9e-9655-e26a80f4b125
+ref table LocalDateTable_11d66002-cf5a-4b36-936d-3aaa708c7ead
+ref table LocalDateTable_fde418c6-456d-4a0c-b048-73d9e9ffc22e
+ref table LocalDateTable_33472310-8712-4a50-8a78-dcf1d7e65e95
+ref table LocalDateTable_7f7be333-2d4a-4079-8560-46fd4c0667fb
+ref table LocalDateTable_a6898003-6536-496c-bd5e-8db371e2c7a8
+ref table _Measures
+
+ref cultureInfo pl-PL
+

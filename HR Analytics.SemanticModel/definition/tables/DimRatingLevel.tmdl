@@ -1,0 +1,34 @@
+table DimRatingLevel
+	lineageTag: 3c17836d-7cd2-4f84-8fd4-acf0ffb5a524
+
+	column RatingID
+		dataType: int64
+		formatString: 0
+		lineageTag: ccddb447-767f-43d2-b83e-fca3b1a8db3e
+		summarizeBy: none
+		sourceColumn: RatingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RatingLevel
+		dataType: string
+		lineageTag: 9d2b78dc-5e97-43cd-b5cf-82ef18346903
+		summarizeBy: none
+		sourceColumn: RatingLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimRatingLevel = m
+		mode: import
+		source =
+				let
+				    Źródło = Csv.Document(File.Contents("C:\Users\erozm\Downloads\case-study-hr-analytics-in-power-bi\Datasets\RatingLevel.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Nagłówki o podwyższonym poziomie" = Table.PromoteHeaders(Źródło, [PromoteAllScalars=true]),
+				    #"Zmieniono typ" = Table.TransformColumnTypes(#"Nagłówki o podwyższonym poziomie",{{"RatingID", Int64.Type}, {"RatingLevel", type text}})
+				in
+				    #"Zmieniono typ"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

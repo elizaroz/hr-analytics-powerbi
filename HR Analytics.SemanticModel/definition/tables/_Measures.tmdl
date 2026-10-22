@@ -1,0 +1,140 @@
+table _Measures
+	lineageTag: b150d649-5024-406c-bb82-104998ebb7d6
+
+	measure TotalEmployees = DISTINCTCOUNT(DimEmployee[EmployeeID])
+		formatString: 0
+		lineageTag: 480ab0d5-809f-4784-887b-2e90ea7f88bb
+
+	measure ActiveEmployees = CALCULATE([TotalEmployees], FILTER(DimEmployee, DimEmployee[Attrition] = "No"))
+		lineageTag: aa100170-c908-4501-921d-625131d07c9a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure InactiveEmployees = CALCULATE([TotalEmployees], FILTER(DimEmployee, DimEmployee[Attrition] = "Yes"))
+		formatString: 0
+		lineageTag: b451cc79-d8b2-4fab-a35a-a0d344acedab
+
+	measure '% Attrition Rate' = DIVIDE([InactiveEmployees], [TotalEmployees])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b0f4f32a-2dcd-449a-9df1-850e4ba09023
+
+	measure TotalEmployeesDate =
+			
+			CALCULATE (
+			    [TotalEmployees],
+			    USERELATIONSHIP ( DimEmployee[HireDate], DimDate[Date] )
+			)
+		formatString: 0
+		lineageTag: 22fe1105-ce4e-44a7-b71b-5c5cec61804e
+
+	measure AverageSalary = AVERAGE(DimEmployee[Salary])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 6976d1b6-c9fa-4173-898e-959865e59b12
+
+	measure LastReviewDate =
+			
+			VAR LastReview = MAX ( FactPerformanceRating[ReviewDate] )
+			RETURN
+			    IF (
+			        ISBLANK ( LastReview ),
+			        "No Review Yet",
+			        FORMAT ( LastReview, "d.MM.yyyy" )
+			    )
+		formatString: Dd.mm.yyy
+		lineageTag: a30710b8-a3c7-4290-8c48-0651c828f9c0
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure NextReviewDate =
+			
+			VAR reviewOrHire =
+			    IF (
+			        MAX ( FactPerformanceRating[ReviewDate] ) = BLANK (),
+			        MAX ( DimEmployee[HireDate] ),
+			        MAX ( FactPerformanceRating[ReviewDate] )
+			    )
+			RETURN
+			    reviewOrHire + 365
+		formatString: d.mm.yyyy
+		lineageTag: e1a8f34a-9af5-4512-bada-553373ddd6bd
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure JobSatisfaction = MAX(FactPerformanceRating[JobSatisfaction])
+		formatString: 0
+		lineageTag: bd49a612-524a-408a-9643-eddd2819b3ab
+
+	measure EnvironmentSatisfaction =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[EnvironmentSatisfaction] ),
+			    USERELATIONSHIP ( FactPerformanceRating[EnvironmentSatisfaction], DimSatisfiedLevel[SatisfactionID] )
+			)
+		formatString: 0
+		lineageTag: 4817df09-2c7c-4eee-9440-b1beb4105720
+
+	measure RelationshipSatisfaction =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[RelationshipSatisfaction] ),
+			    USERELATIONSHIP ( FactPerformanceRating[RelationshipSatisfaction], DimSatisfiedLevel[SatisfactionID] )
+			)
+		formatString: 0
+		lineageTag: 95c65480-ea4f-4b19-9cd5-0c2f3f5d44cf
+
+	measure WorkLifeBalance =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[WorkLifeBalance] ),
+			    USERELATIONSHIP ( FactPerformanceRating[WorkLifeBalance], DimSatisfiedLevel[SatisfactionID] )
+			)
+		formatString: 0
+		lineageTag: bdfabab7-a022-45d5-8465-7dc0ca6ac29a
+
+	measure SelfRating =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[SelfRating] ),
+			    USERELATIONSHIP ( FactPerformanceRating[SelfRating], DimRatingLevel[RatingID] )
+			)
+		formatString: 0
+		lineageTag: 40499d52-a2fa-4d65-9192-1b2cfa53072a
+
+	measure ManagerRating =
+			
+			CALCULATE (
+			    MAX ( FactPerformanceRating[ManagerRating] ),
+			    USERELATIONSHIP ( FactPerformanceRating[ManagerRating], DimRatingLevel[RatingID] )
+			)
+		formatString: 0
+		lineageTag: 85d7dd61-8b85-4229-84a7-1d5cf97b358b
+
+	measure InactiveEmployeesDate = CALCULATE([InactiveEmployees], USERELATIONSHIP(DimEmployee[HireDate], DimDate[Date]))
+		formatString: 0
+		lineageTag: b5c3e922-f0f8-4cae-8811-ec77e9ba6435
+
+	measure '% Attrition Rate Date' = DIVIDE([InactiveEmployeesDate], [TotalEmployeesDate])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 64167e1e-1b28-4748-93d5-c2ddb26b3a55
+
+	measure 'TotalEmployees Label' = FORMAT([TotalEmployees], "#,0")
+		lineageTag: be84778d-b2e9-4805-97da-e0cd520187e7
+
+	measure 'ActiveEmployees Label' = FORMAT([ActiveEmployees], "#,0")
+		lineageTag: 8215e84a-7dc2-4e9a-9e90-59178f59cf3c
+
+	column Column
+		formatString: 0
+		lineageTag: 91c2bfda-e139-45f2-9ded-b6709acd12a9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW ( "Column", BLANK () )
+
+	annotation PBI_Id = 7139f7df9a154cb1b28898b6ded9529c
+

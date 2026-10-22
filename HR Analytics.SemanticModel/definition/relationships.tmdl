@@ -1,0 +1,90 @@
+relationship AutoDetected_6806333c-4825-4186-83ca-6ae07464b0ad
+	fromColumn: FactPerformanceRating.EmployeeID
+	toColumn: DimEmployee.EmployeeID
+
+relationship 3f887cd6-03e1-427d-bea5-7261301f9e1f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.Date
+	toColumn: LocalDateTable_b8b50b6a-4fdf-4f24-b590-8cf7b8427c45.Date
+
+relationship 3b6b5c2f-74d3-460b-b198-e759d88bdafd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'Year Start'
+	toColumn: LocalDateTable_d0e65ec1-2a84-4a62-9c84-81b783ccdfd7.Date
+
+relationship 962bfae8-35c3-4535-840f-1d8b714ddb3f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.YearEnd
+	toColumn: LocalDateTable_fd927cc0-6901-4e8d-88c1-3ef21ec807b3.Date
+
+relationship f8c19bfa-4231-4833-b736-8e6b9f147ab9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.MonthStart
+	toColumn: LocalDateTable_2e023aa6-365e-4d9e-9655-e26a80f4b125.Date
+
+relationship 65da820e-3c98-467b-be1d-fd97d6e5e88e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.MonthEnd
+	toColumn: LocalDateTable_11d66002-cf5a-4b36-936d-3aaa708c7ead.Date
+
+relationship 01e8edc4-0fdf-4e8f-baa7-5f8b775ce3f0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.QuarterStart
+	toColumn: LocalDateTable_fde418c6-456d-4a0c-b048-73d9e9ffc22e.Date
+
+relationship 99387cc0-e4ac-49b5-816c-36c477da9d63
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.QuarterEnd
+	toColumn: LocalDateTable_33472310-8712-4a50-8a78-dcf1d7e65e95.Date
+
+relationship 4909e6c8-eb0a-4ddc-89ca-90baa652ab45
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.WeekStart
+	toColumn: LocalDateTable_7f7be333-2d4a-4079-8560-46fd4c0667fb.Date
+
+relationship 907fa0ea-bbad-4b17-8d97-a5af962c4d6a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.WeekEnd
+	toColumn: LocalDateTable_a6898003-6536-496c-bd5e-8db371e2c7a8.Date
+
+relationship 792996a0-c4fa-5842-09f9-1ad4e8dee24f
+	fromColumn: DimEmployee.Education
+	toColumn: DimEducationLevel.EducationLevelID
+
+relationship 33eed67c-7fdf-4bb7-87da-2ae7d4517036
+	isActive: false
+	fromColumn: DimEmployee.HireDate
+	toColumn: DimDate.Date
+
+relationship c8390811-929d-9e6b-28ee-fa97bd6cf8a4
+	fromColumn: FactPerformanceRating.ReviewDate
+	toColumn: DimDate.Date
+
+relationship b078ff6e-9fc6-3fde-def4-da44c51ed089
+	fromColumn: FactPerformanceRating.SelfRating
+	toColumn: DimRatingLevel.RatingID
+
+relationship 1e5e739f-3457-69e4-9a8b-d17e1a166f94
+	isActive: false
+	fromColumn: FactPerformanceRating.ManagerRating
+	toColumn: DimRatingLevel.RatingID
+
+relationship bbf8395a-b635-e246-cc54-bc96ef280a96
+	fromColumn: FactPerformanceRating.EnvironmentSatisfaction
+	toColumn: DimSatisfiedLevel.SatisfactionID
+
+relationship b503b773-91a7-51bf-38b8-66b3737e71b5
+	isActive: false
+	fromColumn: FactPerformanceRating.JobSatisfaction
+	toColumn: DimSatisfiedLevel.SatisfactionID
+
+relationship 994fa6f6-b9f2-ca7c-a01d-7f5fb49b7e07
+	isActive: false
+	fromColumn: FactPerformanceRating.RelationshipSatisfaction
+	toColumn: DimSatisfiedLevel.SatisfactionID
+
+relationship 09094a95-1c85-3f51-3d76-83472f30f3ca
+	isActive: false
+	fromColumn: FactPerformanceRating.WorkLifeBalance
+	toColumn: DimSatisfiedLevel.SatisfactionID
+

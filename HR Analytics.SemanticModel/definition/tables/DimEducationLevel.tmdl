@@ -1,0 +1,32 @@
+table DimEducationLevel
+	lineageTag: 5b77183d-e9ec-4ed8-ac1b-1700624363e0
+
+	column EducationLevelID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fe00633-dff7-4637-a8e8-b806015e1ee7
+		summarizeBy: none
+		sourceColumn: EducationLevelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EducationLevel
+		dataType: string
+		lineageTag: 15e1f9a3-0cc9-4533-92b8-2764e30ad845
+		summarizeBy: none
+		sourceColumn: EducationLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEducationLevel = m
+		mode: import
+		source =
+				let
+				    Źródło = Csv.Document(File.Contents("C:\Users\erozm\Downloads\case-study-hr-analytics-in-power-bi\Datasets\EducationLevel.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Nagłówki o podwyższonym poziomie" = Table.PromoteHeaders(Źródło, [PromoteAllScalars=true]),
+				    #"Zmieniono typ" = Table.TransformColumnTypes(#"Nagłówki o podwyższonym poziomie",{{"EducationLevelID", Int64.Type}, {"EducationLevel", type text}})
+				in
+				    #"Zmieniono typ"
+
+	annotation PBI_ResultType = Table
+
